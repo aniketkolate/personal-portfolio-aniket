@@ -1,0 +1,11 @@
+:root {
+  /* Page / Hero backgrounds */
+  --color-page-bg: #000000;
+
+  /* Text */
+  --color-text-default: #ffffff;
+  --color-text-highlight: #00FFFF;
+
+  /* Navbar */
+  --color-navbar-active: #FF7B00;
+}
