@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import { logoPath } from "@/constants/LogoPath";
+import { logoPath } from "@/constants/logoPath";
 import "./Logo.scss";
-
 
 interface LogoProps {
   onAnimationComplete?: () => void;
@@ -11,26 +10,24 @@ interface LogoProps {
 
 const Logo: React.FC<LogoProps> = ({
   onAnimationComplete,
-  duration = 2000,
-  exitDelay = 1000,
+  duration = 1500,
+  exitDelay = 500,
 }) => {
   const strokeRef = useRef<SVGPathElement | null>(null);
 
   const [filled, setFilled] = useState(false);
   const [toHeader, setToHeader] = useState(false);
-  const [hideLogoContainer, setHideLogoContainer] = useState(false);
+  const [fadeBackground, setFadeBackground] = useState(false);
+  const [resetContainer, setResetContainer] = useState(false);
 
-  const setTimedState = (
-    callback: () => void,
-    delay: number
-  ): number => window.setTimeout(callback, delay);
+  const setTimedState = (callback: () => void, delay: number): number =>
+    window.setTimeout(callback, delay);
 
   useEffect(() => {
     const stroke = strokeRef.current;
     if (!stroke) return;
 
     const length = stroke.getTotalLength();
-
     stroke.style.transition = "none";
     stroke.style.strokeDasharray = `${length}`;
     stroke.style.strokeDashoffset = `${length}`;
@@ -44,21 +41,34 @@ const Logo: React.FC<LogoProps> = ({
     const timeouts: number[] = [];
 
     timeouts.push(setTimedState(() => setFilled(true), duration + 120));
+
     timeouts.push(setTimedState(() => setToHeader(true), duration + 120 + exitDelay));
+
     timeouts.push(
-      setTimedState(() => onAnimationComplete?.(), duration + 120 + exitDelay + 800)
+      setTimedState(() => setFadeBackground(true), duration + 120 + exitDelay + 400)
     );
+
     timeouts.push(
-      setTimedState(() => setHideLogoContainer(true), duration + 120 + exitDelay + 1400)
+      setTimedState(() => {
+        setResetContainer(true);
+        onAnimationComplete?.();
+      }, duration + 120 + exitDelay + 1600)
     );
 
     return () => timeouts.forEach(clearTimeout);
   }, [duration, exitDelay, onAnimationComplete]);
 
-    
+  const containerClasses = [
+    "logo-container",
+    fadeBackground ? "fade-background" : "",
+    resetContainer ? "reset-styles" : "",
+  ].join(" ");
 
-  const containerClasses = `logo-container ${hideLogoContainer ? "hide-logo-contianer" : ""}`;
-  const svgClasses = `logo-svg ${filled ? "is-filled" : ""} ${toHeader ? "logo-to-header" : ""}`;
+  const svgClasses = [
+    "logo-svg",
+    filled ? "is-filled" : "",
+    toHeader ? "logo-to-header" : "",
+  ].join(" ");
 
   return (
     <div className={containerClasses}>
@@ -69,23 +79,16 @@ const Logo: React.FC<LogoProps> = ({
         role="img"
         aria-label="Logo animation"
       >
-        <defs>
-          <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#ffffff" />
-            <stop offset="100%" stopColor="#ffffff" />
-          </linearGradient>
-        </defs>
-
         <path
           ref={strokeRef}
           className="logo-stroke"
           d={logoPath}
           fill="none"
-          strokeWidth={2}
+          strokeWidth={10}
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-        <path className="logo-fill" d={logoPath} fill="url(#logoGradient)" />
+        <path className="logo-fill" d={logoPath} fill="var(--logo-fill-color)" />
       </svg>
     </div>
   );
