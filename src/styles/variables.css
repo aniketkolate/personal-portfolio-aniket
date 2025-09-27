@@ -1,0 +1,20 @@
+:root {
+  /* Page / Hero backgrounds */
+  --color-page-bg: #000000;
+
+  /* Text */
+  --color-text-default: #ffffff;
+  --color-text-highlight: #00FFFF;
+
+  /* Navbar */
+  --color-navbar-active: #e84118;
+
+  /* Logo shadows */
+  --logo-drop-shadow: drop-shadow(0 0 4px #ffffff);
+  --logo-drop-shadow-extra: drop-shadow(0 0 6px rgba(255, 255, 255, 0.06));
+  --logo-drop-shadow-empty: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+
+  /* Logo stroke and fill */
+  --logo-stroke-color: #ffffff;
+  --logo-fill-color: #ffffff;
+}
