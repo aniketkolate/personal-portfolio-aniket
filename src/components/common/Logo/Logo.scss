@@ -1,0 +1,91 @@
+.logo-container {
+  position: fixed;
+  inset: 0;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  z-index: 9999;
+  pointer-events: auto;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--color-page-bg);
+    opacity: 1;
+    transition: opacity 1000ms ease;
+    z-index: -1;
+  }
+
+  &.fade-background::before {
+    opacity: 0;
+  }
+
+  &.reset-styles {
+    position: static;
+    inset: auto;
+    transform: none;
+    width: auto;
+    height: auto;
+    top: auto;
+    left: auto;
+    z-index: auto;
+    pointer-events: auto;
+    background: none;
+  }
+
+  .logo-svg {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: auto;
+    overflow: visible;
+    transform-origin: center;
+    transition:
+      transform 0.6s ease-in-out,
+      top 0.6s ease-in-out,
+      left 0.6s ease-in-out;
+
+    &.logo-to-header {
+      position: fixed;
+      top: 30px;
+      left: 30px;
+      transform: scale(0.5);
+      transform-origin: top left;
+      filter: none;
+    }
+
+    &.is-filled .logo-fill {
+      opacity: 1;
+      filter: var(--logo-drop-shadow);
+    }
+
+    .logo-stroke {
+      stroke: var(--logo-stroke-color);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 4000;
+      stroke-dashoffset: 4000;
+      filter: var(--logo-drop-shadow-extra);
+      transition: filter 240ms ease;
+    }
+
+    .logo-fill {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 700ms ease, filter 700ms ease;
+      filter: var(--logo-drop-shadow-empty);
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .logo-container .logo-svg {
+    width: 100px;
+  }
+}

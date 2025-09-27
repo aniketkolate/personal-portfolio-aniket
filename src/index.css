@@ -1,0 +1,11 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-page-bg);
+    color: var(--color-text-default);
+    font-family: 'Inter', sans-serif;
+}
