@@ -7,4 +7,5 @@
 body {
     background-color: var(--color-page-bg);
     color: var(--color-text-default);
+    font-family: 'Inter', sans-serif;
 }
