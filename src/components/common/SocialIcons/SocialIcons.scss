@@ -1,0 +1,14 @@
+.social-icons {
+    display: flex;
+    justify-content: center;
+    width: 208px;
+    gap: 20px;
+
+    a {
+        img {
+            width: 20px;
+            height: 20px;
+
+        }
+    }
+}
