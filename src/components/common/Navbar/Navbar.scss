@@ -45,3 +45,17 @@
     }
   }
 }
+
+.navbar-container-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    display: none;
+  }
+
+  .navbar-container-mobile {
+    display: block;
+  }
+}
