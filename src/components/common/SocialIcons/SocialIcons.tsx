@@ -7,11 +7,11 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa";
 
 const socialLinks = [
-  { name: 'LinkedIn', url: 'https://linkedin.com/in/yourusername', icon: <FaLinkedin color="white" size={25}/> },
-  { name: 'GitHub', url: 'https://github.com/yourusername', icon: <FaGithub color="white" size={25}/> },
-  { name: 'X', url: 'https://x.com/yourusername', icon: <FaXTwitter color="white" size={25}/> },
-  { name: 'Instagram', url: 'https://instagram.com/yourusername', icon: <FaInstagram color="white" size={25}/> },
-  { name: 'WhatsApp', url: 'https://wa.me/yourphonenumber', icon: <FaWhatsapp color="white" size={25}/> },
+  { name: 'LinkedIn', url: 'https://linkedin.com/in/aniketwhocodes', icon: <FaLinkedin color="white" size={22}/> },
+  { name: 'GitHub', url: 'https://github.com/aniketkolate', icon: <FaGithub color="white" size={22}/> },
+  { name: 'X', url: 'https://x.com/theaniketverse', icon: <FaXTwitter color="white" size={22}/> },
+  { name: 'Instagram', url: 'https://instagram.com/theaniketverse', icon: <FaInstagram color="white" size={22}/> },
+  { name: 'WhatsApp', url: 'https://wa.me/+918956181856', icon: <FaWhatsapp color="white" size={22}/> },
 ];
 
 const SocialIcons: React.FC = () => (
