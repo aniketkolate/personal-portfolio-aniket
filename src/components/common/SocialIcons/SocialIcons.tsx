@@ -1,17 +1,17 @@
 import React from 'react';
 import './SocialIcons.scss';
-import GitHubIcon from '@/assets/icons/github.png';
-import LinkedInIcon from '@/assets/icons/linkedin.png';
-import InstagramIcon from '@/assets/icons/instagram.png';
-import XIcon from '@/assets/icons/x.png';
-import WhatsAppIcon from '@/assets/icons/whatsapp.png';
+import { FaGithub } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaWhatsapp } from "react-icons/fa";
 
 const socialLinks = [
-  { name: 'GitHub', url: 'https://github.com/yourusername', icon: GitHubIcon },
-  { name: 'LinkedIn', url: 'https://linkedin.com/in/yourusername', icon: LinkedInIcon },
-  { name: 'Instagram', url: 'https://instagram.com/yourusername', icon: InstagramIcon },
-  { name: 'X', url: 'https://x.com/yourusername', icon: XIcon },
-  { name: 'WhatsApp', url: 'https://wa.me/yourphonenumber', icon: WhatsAppIcon },
+  { name: 'LinkedIn', url: 'https://linkedin.com/in/aniketwhocodes', icon: <FaLinkedin color="white" size={22}/> },
+  { name: 'GitHub', url: 'https://github.com/aniketkolate', icon: <FaGithub color="white" size={22}/> },
+  { name: 'X', url: 'https://x.com/theaniketverse', icon: <FaXTwitter color="white" size={22}/> },
+  { name: 'Instagram', url: 'https://instagram.com/theaniketverse', icon: <FaInstagram color="white" size={22}/> },
+  { name: 'WhatsApp', url: 'https://wa.me/+918956181856', icon: <FaWhatsapp color="white" size={22}/> },
 ];
 
 const SocialIcons: React.FC = () => (
@@ -24,7 +24,7 @@ const SocialIcons: React.FC = () => (
         rel="noopener noreferrer"
         aria-label={link.name}
       >
-        <img src={link.icon} alt={link.name} />
+        {link.icon}
       </a>
     ))}
   </div>
